@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import WikiApi from './WikiApi.js';
+//import Jumbotron from 'react-bootstrap';
 
-export default class WikiLink extends Component {
+
+export default class WikiSummary extends Component {
   //Called auto, component is ready to be displayed
   
   constructor(props){
       super(props);
       this.state = {
-          links: []
+          summary: "Loading..."
       };
   }
   
   componentDidMount(){
       
-    var self = this;
+      var self = this;
       
-    WikiApi.getLinks(this.props.title).then(function(text){
+    WikiApi.getSummary(this.props.title).then(function(text){
        self.setState({
-        links: text   
+        summary: text   
        }); 
     });
   }
@@ -27,9 +29,17 @@ export default class WikiLink extends Component {
     
     return (
       <div>
-        <ul>
-          {this.state.links.map(n => <li key={n}  style={{ listStyle: 'none' }}> {n} <hr /></li>) }
-        </ul>
+      
+        <h1>
+          {this.props.title}
+        </h1>
+        
+        <p>
+          {this.state.summary}
+        </p>
+        
+        <hr />
+        
       </div>
     );
   }

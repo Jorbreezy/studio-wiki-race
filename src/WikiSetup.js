@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import WikiApi from './WikiApi.js';
 
 export default class WikiSetup extends Component {
   constructor(props) {
@@ -9,7 +10,16 @@ export default class WikiSetup extends Component {
   }
 
   componentDidMount() {
-    this.setState({ title: 'Los Angeles' });
+    var title;
+    var self = this;
+    
+    WikiApi.getRandomArticles(10).then(function(titles) {
+      for (var i = 0; i < titles.length; i++) {
+        title = titles[i];
+      }
+      
+      self.setState({ title: title });
+    });
   }
 
   render() {
