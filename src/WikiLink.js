@@ -22,13 +22,23 @@ export default class WikiLink extends Component {
     });
   }
   
+  componentDidUpdate(){
+    var self = this;
+      
+    WikiApi.getLinks(this.props.title).then(function(text){
+       self.setState({
+        links: text   
+       }); 
+    });
+  }
+  
   render() {
     var currentTitle = this.props.title;
     
     return (
       <div>
         <ul>
-          {this.state.links.map(n => <li key={n}  style={{ listStyle: 'none' }}> {n} <hr /></li>) }
+          {this.state.links.map(n => <li key={n} style={{ listStyle: 'none' }} onClick={() => this.props.addTitle(n) }> {n} <hr /></li>) }
         </ul>
       </div>
     );
