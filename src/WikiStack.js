@@ -18,7 +18,7 @@ export default class WikiStack extends Component {
     
     return (
       <div>
-        { this.props.titles.map( n => <button key={n} onClick={() => this.props.setCurrentTitle(n) }> {n} </button>) } 
+        { this.props.titles.map( n => <button key={n} class="btn btn-default" onClick={() => this.props.setCurrentTitle(n) }> {n} </button>) } 
       </div>
     );
   }
