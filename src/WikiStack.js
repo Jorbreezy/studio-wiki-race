@@ -15,10 +15,16 @@ export default class WikiStack extends Component {
         // {this.state.links.map(n => <li key={n} style={{ listStyle: 'none' }} onClick={() => this.props.addTitle(n) }> {n} <hr /></li>) }
         // { this.props.titles.map(n => <button onClick={this.props.setCurrentTitle(n)}> {n} </button>) }
     
+    var btnC = "btn btn-info";
+    
+    if(this.props.isComplete == true){
+      btnC = "btn btn-success";
+    } 
     
     return (
       <div>
-        { this.props.titles.map( n => <button key={n} class="btn btn-default" onClick={() => this.props.setCurrentTitle(n) }> {n} </button>) } 
+        { this.props.titles.map( n => <button key={n} class={btnC} onClick={() => this.props.setCurrentTitle(n) }> {n} </button>) }
+        <button class="btn btn-primary">{ this.props.targetTitle } </button>
       </div>
     );
   }

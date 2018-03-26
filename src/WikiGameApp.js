@@ -17,7 +17,7 @@ export default class WikiGameApp extends Component {
 
     return (
       <div>
-        <WikiStack titles={titles} setCurrentTitle={setCurrentTitle}/>
+        <WikiStack titles={titles} setCurrentTitle={setCurrentTitle}  isComplete={isComplete} targetTitle={targetTitle}/>
         <WikiSummary title={currentTitle} />
         <WikiLink title={currentTitle} setCurrentTitle={setCurrentTitle} addTitle={addTitle}/>
       </div>
